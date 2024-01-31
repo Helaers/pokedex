@@ -3,8 +3,12 @@ import pokemonLogo from "./assets/pokemon.svg";
 import "./styles/App.css";
 import "./styles/pokemon.css";
 
+import { PokemonListItem } from "./types/types";
+
+import PokemonList from "./components/PokemonList";
+
 function App() {
-  const [pokemonList, setPokemonList] = useState([]);
+  const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,11 +23,7 @@ function App() {
   return (
     <>
       <img src={pokemonLogo} className="logo" alt="Pokemon logo" />
-      <div className="pokemon-list">
-        {pokemonList.map((pokemon, index) => (
-          <pre key={index}>{JSON.stringify(pokemon)}</pre>
-        ))}
-      </div>
+      <PokemonList list={pokemonList} />
     </>
   );
 }
