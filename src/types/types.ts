@@ -185,3 +185,14 @@ type Type = {
   slot: number;
   type: Species;
 };
+export type PokemonListDto = {
+  count: number;
+  next: string;
+  previous: null;
+  results: Result[];
+};
+
+type Result = {
+  name: string;
+  url: string;
+};
